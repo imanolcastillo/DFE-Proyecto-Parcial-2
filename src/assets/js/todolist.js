@@ -243,7 +243,7 @@ function closeaddTaskModal() {
 
 // Boton Abrir/Cerrar ModalUpdate (VIEW)
 function openupdateTaskModal(taskId) {
-  getTaskData(taskId);
+  getUpdateTaskData(taskId);
 
   document.getElementById('modal-background').style.display = 'block';
   document.getElementById('updatemodalT').style.display = 'block';
@@ -342,7 +342,7 @@ function getTasksData(title, priority, dueDate) {
     });
 }
 
-function getTaskData(taskId) {
+function getUpdateTaskData(taskId) {
   fetchAPI(`${apiURL}/users/219220049/tasks/${taskId}`, 'GET')
     .then(data => {
       const task = ReadAPIToTask(data);
