@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viweport" content="width=device-width, initial-scale=1.0">
+    <title>ToDoList</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap-Quartz.css" />
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav id="navbar">
+        <div>
+            <ul class="nav-links">
+                <li>
+                    <a class="a-navbar" href="../index.html">To Do List</a>
+                </li>
+        </div>
+    </nav>
+    <main>
+        <div class="caja">
+            <!-- <div class="fx-row fx-space-between btnAddTaskContainer">
+
+            <button id="addTask" class="btn-action">Agregar Nueva Tarea</button>
+
+            </div> -->
+
+            <form id="filter-form" class="filter-section">
+
+                <input type="text" id="title-filtro" placeholder="Titulo Tarea" class="filter-field">
+
+                <select id="priority-filtro" class="filter-field" placeholder="Prioridad">
+                    <option value="" selected>Selecciona la Prioridad</option>
+                    <option value="Alta">Alta</option>
+                    <option value="Media">Media</option>
+                    <option value="Baja">Baja</option>
+                </select>
+
+                <input type="date" id="fecha-filtro" placeholder="Fecha de Venta" class="filter-field">
+
+                <button type="submit" id="apply-filters" class="btn-submit">Buscar</button>
+                <button type="reset" id="reset-filters" class="btn-reset">Limpiar</button>
+
+            </form>
+
+            <br>
+
+            <div class="table-container">
+
+                <table id="data-table" class="toDoList fx-space-between">
+                    <thead>
+                        <tr>
+                            <th><button id="addTask" class="btn-action"><i class="fa fa-plus"></i></button></th>
+                            <th>Id</th>
+                            <th>Tarea</th>
+                            <th>Descripcion</th>
+                            <th>Prioridad</th>
+                            <th>Completado</th>
+                            <th>Etiqueta</th>
+                            <th>Fecha Limite</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="data-table-body">
+                        <!-- Llenaremos la tabla con datos consumidos desde una api -->
+                    </tbody>
+                </table>
+            </div>
+            <div id="message" class="message" style="align-items: center; justify-content: center;">
+                <p>No se ha realizado una consulta.</p>
+            </div>
+        </div>
+            <div id="modal-background" class="modal-background">
+
+            </div>
+
+            <div id="modalT" class="modalT">
+
+                <h2>Nueva Tarea</h2>
+
+                <form id="task-form" class="form-section">
+
+                    <div class="input-container">
+                        <input type="text" id="tarea" class="form-field" placeholder="Tarea" required>
+                        <label for="tarea" class="label-input">Tarea</label>
+                    </div>
+                    <div class="input-container">
+                        <textarea id="description" class="form-field" placeholder="Descripcion" required></textarea>
+                        <label for="description" class="label-input">Descripcion</label>
+                    </div>
+                    <div class="input-container">
+                        <select id="priority" class="form-field" placeholder="Selecciona la Prioridad" required>
+                            <option value="" selected disabled hidden>Selecciona la Prioridad</option>
+                            <option value="Alta">Alta</option>
+                            <option value="Media">Media</option>
+                            <option value="Baja">Baja</option>
+                        </select>
+                        <label for="priority" class="label-input">Selecciona la Prioridad</label>
+                    </div>
+                    <div class="input-container">
+                        <select id="completed" class="form-field" placeholder="Selecciona el estatus" required>
+                            <option value="" selected disabled hidden>Selecciona el estatus</option>
+                            <option value="True">True</option>
+                            <option value="False">False</option>
+                        </select>
+                        <label for="completed" class="label-input">Selecciona el estatus</label>
+                    </div>
+                    <div class="input-container">
+                        <input type="text" id="tag" class="form-field" placeholder="Etiqueta" required>
+                        <label for="tag" class="label-input">Etiqueta</label>
+                    </div>
+                    <div class="input-container">
+                        <input type="text" id="dueDate" class="form-field" placeholder="Fecha Limite"
+                            onfocus="(this.type='date')" onblur="(this.type='text')" required>
+                        <label for="dueDate" class="label-input">Fecha Limite</label>
+                    </div>
+                    <div class="btn-moda-container">
+                    <button type="submit" class="btn-submit btn-modal">Guardar</button>
+                </div>
+                </form>
+            </div>
+
+
+            <div id="updatemodalT" class="modalT">
+
+                <h2>Edita tu Tarea</h2>
+
+                <form id="updatetask-form" class="form-section">
+
+                    <p id="update-id"></p>
+
+                    <div class="input-container">
+                        <input type="text" id="update-tarea" class="form-field" placeholder="Tarea" required>
+                        <label for="update-tarea" class="label-input">Tarea</label>
+                    </div>
+                    <div class="input-container">
+                        <textarea id="update-description" class="form-field" placeholder="Descripcion"
+                            required></textarea>
+                        <label for="update-description" class="label-input">Descripcion</label>
+                    </div>
+                    <div class="input-container">
+                        <select id="update-priority" class="form-field" placeholder="Selecciona la Prioridad" required>
+                            <option value="" selected disabled hidden>Selecciona la Prioridad</option>
+                            <option value="Alta">Alta</option>
+                            <option value="Media">Media</option>
+                            <option value="Baja">Baja</option>
+                        </select>
+                        <label for="update-priority" class="label-input">Selecciona la Prioridad</label>
+                    </div>
+                    <div class="input-container">
+                        <select id="update-completed" class="form-field" placeholder="Selecciona el estatus" required>
+                            <option value="" selected disabled hidden>Selecciona el estatus</option>
+                            <option value="True">True</option>
+                            <option value="False">False</option>
+                        </select>
+                        <label for="update-completed" class="label-input">Selecciona el estatus</label>
+                    </div>
+                    <div class="input-container">
+                        <input type="text" id="update-tag" class="form-field" placeholder="Etiqueta" required>
+                        <label for="update-tag" class="label-input">Etiqueta</label>
+                    </div>
+                    <div class="input-container">
+                        <input type="text" id="update-dueDate" class="form-field" placeholder="Fecha Limite"
+                            onfocus="(this.type='date')" onblur="(this.type='text')" required>
+                        <label for="update-dueDate" class="label-input">Fecha Limite</label>
+                    </div>
+                    <div class="btn-modal-container">
+                    <button type="submit" class="btn-submit btn-modal">Guardar</button>
+                </div>
+                </form>
+            </div>
+    </main>
+
+    <!-- Javascript Imports -->
+    <script src="./shared/utils.js"></script>
+    <script src="./shared/fetch-api.js"></script>
+    <script src="./assets/js/todolist.js"></script>
+</body>
+
+</html>

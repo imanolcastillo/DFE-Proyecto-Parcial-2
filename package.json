@@ -1,0 +1,19 @@
+{
+  "name": "dfe-proyecto-parcial-2",
+  "version": "1.0.0",
+  "description": "Proyecto Parcial 2",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "live-server src",
+    "watch:sass": "node-sass src/assets/scss/styles.scss src/assets/css/styles.css --watch" ,
+    "start": "concurrently \"npm run watch:sass\" \"npm run serve\"" 
+  },
+  "author": "Imanol Castillo",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "live-server": "^1.1.0",
+    "node-sass": "^9.0.0"
+  }
+}
