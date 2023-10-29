@@ -115,8 +115,8 @@ function MostrarTareasToModal(task) {
   upid.value = task.id;
   uptitle.value = task.title;
   updescription.value = task.description;
-  uppriority.value = task.priority;
-  upcompleted.value = task.completed;
+  uppriority.value = task.priority.toString();
+  upcompleted.value = task.completed.toString();
   uptag.value = task.tag;
   updueDate.value = formatDateToISO(task.dueDate);
   console.log(task);
